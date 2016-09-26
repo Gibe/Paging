@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Gibe.Pager</id>
+    <version>$version$</version>
+    <authors>Gibe Digital Ltd</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Basic pager
+    </description>
+    <dependencies>
+      <dependency id="Gibe.Tools" version="1.0.193" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Gibe.Pager.dll" target="lib" />
+  </files>
+</package>
