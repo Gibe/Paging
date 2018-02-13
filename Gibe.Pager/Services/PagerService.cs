@@ -23,6 +23,7 @@ namespace Gibe.Pager.Services
 
 			var pagerModel = new PagerModel
 			{
+				TotalItemCount = totalItems,
 				PaginationItems = GetPaginationItemsToDisplay(totalPages, currentPage, pageQueryStringKey),
 				TotalPages = totalPages,
 				ItemsPerPage = itemsPerPage,
