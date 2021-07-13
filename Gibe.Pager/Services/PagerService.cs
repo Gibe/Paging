@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Gibe.Pager.Extensions;
 using Gibe.Pager.Interfaces;
 using Gibe.Pager.Models;
-using Gibe.Tools;
 
 namespace Gibe.Pager.Services
 {
 	public class PagerService : IPagerService
 	{
-		private readonly HttpContextBase _httpContextBase;
+		private readonly ICurrentUrlService _currentUrlService;
 
-		public PagerService(HttpContextBase httpContextBase)
+		public PagerService(ICurrentUrlService currentUrlService)
 		{
-			_httpContextBase = httpContextBase;
+			_currentUrlService = currentUrlService;
 		}
 
 		public PagerModel GetPager(int totalItems, int itemsPerPage, int currentPage, string pageQueryStringKey = "page")
@@ -117,7 +116,7 @@ namespace Gibe.Pager.Services
 
 		private string GetUrl(int page, string pageQueryStringKey)
 		{
-			var currentUri = new UriBuilder(_httpContextBase.Request.Url).Uri;
+			var currentUri = new UriBuilder(_currentUrlService.CurrentUrl()).Uri;
 			currentUri = currentUri.ExtendQuery(new Dictionary<string, string> { { pageQueryStringKey, page.ToString() } });
 			return currentUri.PathAndQuery;
 		}
